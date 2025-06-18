@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 1 83% 58%;
+    --primary-foreground: 355.7 100% 97.3%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 1 83% 58%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 1 83% 58%;
+    --primary-foreground: 355.7 100% 97.3%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 1 83% 58%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.time-slot {
+  @apply relative flex items-center justify-center p-2 rounded-md cursor-pointer transition-all duration-200 hover:bg-primary/10;
+}
+
+.time-slot.available {
+  @apply bg-secondary hover:bg-primary/10;
+}
+
+.time-slot.selected {
+  @apply bg-primary text-primary-foreground hover:bg-primary/90;
+}
+
+.time-slot.unavailable {
+  @apply bg-muted text-muted-foreground cursor-not-allowed;
+}
+
+.calendar-day {
+  @apply relative flex flex-col items-center justify-center p-2 rounded-md cursor-pointer transition-all duration-200;
+}
+
+.calendar-day.current-month {
+  @apply hover:bg-primary/10;
+}
+
+.calendar-day.other-month {
+  @apply text-muted-foreground;
+}
+
+.calendar-day.selected {
+  @apply bg-primary text-primary-foreground hover:bg-primary/90;
+}
+
+.calendar-day.today {
+  @apply font-bold;
+}
+
+.calendar-day.today::after {
+  content: "";
+  @apply absolute bottom-1 w-1 h-1 rounded-full bg-primary;
+}
+
+.calendar-day.has-appointments::before {
+  content: "";
+  @apply absolute top-1 right-1 w-1.5 h-1.5 rounded-full bg-zomato-red;
+}
+
+.fc-event {
+  @apply cursor-pointer border-none shadow-sm transition-transform duration-200 hover:scale-[1.02];
+}
+
+.fc-event-main {
+  @apply p-1;
+}
+
+.fc-toolbar-title {
+  @apply text-lg font-bold;
+}
+
+.fc-button {
+  @apply bg-primary text-primary-foreground border-none shadow-sm hover:bg-primary/90;
+}
+
+.fc-button-active {
+  @apply bg-primary/90;
+}
+
+.fc-day-today {
+  @apply bg-primary/5;
+}
+
+.fc-day-other {
+  @apply bg-muted/30;
+}
+
+.fc-scrollgrid {
+  @apply border-border;
+}
+
+.fc-scrollgrid-section > td {
+  @apply border-border;
+}
+
+.fc-col-header-cell {
+  @apply bg-muted/50;
+}
